@@ -17,8 +17,12 @@ public Vector getDir() {
 public Ray(Point3D a, Vector b)
 {
 	p0= a;
-	dir=b;
+	if(b.length()==1)
+		dir=b;
+	else
+		dir= b.normalized();	
 }
+
 /*
 public Ray(Ray a) //copy constructor
 {
