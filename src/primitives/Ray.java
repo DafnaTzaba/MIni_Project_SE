@@ -19,12 +19,13 @@ public Ray(Point3D a, Vector b)
 	p0= a;
 	dir=b;
 }
+/*
 public Ray(Ray a) //copy constructor
 {
 	p0= new Point3D(a.p0);
 	dir=new Vector(a.dir);
 }
-
+*/
 @Override
 public boolean equals(Object obj)
 {
