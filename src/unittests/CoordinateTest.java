@@ -8,13 +8,16 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author da077
+ * @author Herout Rozilyo
  *
  */
 public class CoordinateTest {
 
+	/**
+	 * Test method for {@link primitives.Coordinate#Coordinate(double)}.
+	 */
 	@Test
-	public void test() {
+	public void testCoordinate() {
 		fail("Not yet implemented");
 	}
 
