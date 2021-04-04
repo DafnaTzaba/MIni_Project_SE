@@ -3,7 +3,7 @@ package primitives;
 public class Point3D {
 
 	/**
-	 * static varieble ZERO to point(0,0,0)
+	 * static variable ZERO to point(0,0,0)
 	 */
 	public final static Point3D ZERO = new Point3D(0d, 0d, 0d);
 
@@ -62,7 +62,7 @@ public class Point3D {
 
 	/**
 	 * override func equals to Point3D
-	 *   @param o Object (basicaly another Point3d) to compare
+	 *   @param o Object (basically another Point3d) to compare
      *   @return true or false accordingly
 	 */
 	@Override
@@ -99,7 +99,7 @@ public class Point3D {
 	}
 
 	/**
-	 * to add vactor to point
+	 * to add vector to point
 	 * @param v = vector to add to our point
 	 * @return the new point after addition
 	 */
