@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Vector;
 
 public class Triangle extends Polygon {
 
@@ -22,5 +23,9 @@ public class Triangle extends Polygon {
 	public String toString() {
 		return "Triangle{" + "vertices=" + vertices + ", plane=" + plane + '}';
 	}
-
+	
+	@Override
+	public Vector getNormal(Point3D point) {
+		return null;
+	}
 }
