@@ -1,2 +1,0 @@
-module minu_project {
-}
