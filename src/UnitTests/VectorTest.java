@@ -1,24 +1,15 @@
 package UnitTests;
-import static java.lang.System.out;
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
-import primitives.Point3D;
 import primitives.Vector;
 import static primitives.Util.isZero;
 public class VectorTest {
 
-	@Test
-	public void testVectorDoubleDoubleDouble() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testVectorPoint3D() {
-		fail("Not yet implemented");
-	}
+
 
 	@Test
 	public void testAdd() {
@@ -127,7 +118,7 @@ public class VectorTest {
 	public void testLength() {
 		   // ============ Equivalence Partitions Tests ==============
 		 Vector v1=new Vector(1d,2d,2d);
-	     assertTrue("lengh result is not orthogonal to 1st operand", isZero(v1.length()-9));
+	     assertTrue("lengh result is not orthogonal to 1st operand", isZero(v1.length()-3));
 	
 	}
 
@@ -139,7 +130,7 @@ public class VectorTest {
 		Vector vCopyNormalize = v.normalize();
 	    assertTrue("Normalize result is not 1 length", isZero(v.length()-1));
 	    //TC02 if the vector not change
-	     assertEquals("ERROR: normalize() function creates a new vector",vCopyNormalize.equals(v), 0.00001);
+	     assertTrue("ERROR: normalize() function creates a new vector",vCopyNormalize.equals(v));
 	}
 
 	@Test
@@ -147,10 +138,10 @@ public class VectorTest {
 		   // ============ Equivalence Partitions Tests ==============
 				Vector v = new Vector(1, 2, 3);
 				//TC01 if the length change to be 1
-			    assertTrue("Normalize result is not 1 length", isZero(v.length()-1));
+			    assertTrue("Normalize result is not 1 length", isZero(v.normalized().length()-1));
 			    //TC02 if the vector change
 				Vector u = v.normalized();
-			     assertEquals("ERROR: normalize() function creates a new vector",u.equals(v), 0.00001);
+				assertFalse("ERROR: normalize() function creates a new vector",u.equals(v));
 
 	}
 

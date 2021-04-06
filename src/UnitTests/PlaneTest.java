@@ -5,9 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import geometries.Plane;
-import geometries.Polygon;
 import primitives.Point3D;
-import static primitives.Util.isZero;
+import primitives.Vector;
 
 public class PlaneTest {
 
@@ -31,11 +30,22 @@ public class PlaneTest {
         // TC02: if the normal length equal 1
         	Plane plane= new Plane(p1,p2,p3);
         	assertEquals("uncorrect normal",plane.getNormal().length(),1,0.0001);
-            // TC03: 2 point are equals
-        	
+            // TC03: 2 point are equals. if they are equal we will have throw from vector because the 2 points create zero vector
+            try {
+            	
+        		Plane plane1= new Plane(p1,p1,p3);
+        		   fail("Failed constructing a correct Plane");
+            } catch (IllegalArgumentException e) {
+             
+            }
+	
         	
             // TC04: all the point been on the same Straight
-
+            try {           	
+    		Plane plane2= new Plane(new Point3D(2,1,0),new Point3D(5,0,3),new Point3D(3.5,0.5,1.5));
+            fail("Failed constructing a correct Plane");
+            } catch (IllegalArgumentException e) {
+            }
         	
 	}
 
@@ -43,7 +53,11 @@ public class PlaneTest {
 
 	@Test
 	public void testGetNormalPoint3D() {
-
+		 // ============ Equivalence Partitions Tests ==============
+        // TC01: There is a simple single test here
+        Plane pl = new Plane(new Point3D(0, 0, 1), new Point3D(1, 0, 0), new Point3D(0, 1, 0));
+        double sqrt3 = Math.sqrt(1d / 3);
+        assertEquals( "Bad normal to plane",new Vector(sqrt3, sqrt3, sqrt3), pl.getNormal(new Point3D(0, 0, 1)));
 	}
 
 }

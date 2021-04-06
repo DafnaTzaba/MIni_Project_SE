@@ -1,6 +1,5 @@
 package UnitTests;
 
-import static java.lang.System.out;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -45,7 +44,7 @@ public class Point3DTest {
 		 // ============ Equivalence Partitions Tests ==============
 		Point3D p1 = new Point3D(4, 4, 2);
 		Point3D p2 = new Point3D(2, 2, 3);
-	     assertTrue("ERROR: Point Distance does not work correctly",isZero(p1.distance(p2)-1));
+	    assertTrue("ERROR: Point Distance does not work correctly",isZero(p1.distance(p2)-3));
 
 	
 	}

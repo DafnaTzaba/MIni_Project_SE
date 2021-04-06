@@ -32,8 +32,9 @@ public class Plane implements Geometry {
 	 */
 	public Plane(Point3D v1, Point3D v2, Point3D v3) {
 		q0 = new Point3D(v1.getX(), v1.getY(), v1.getZ());
-		Vector u1 = new Vector(v2);
-		Vector u2 = new Vector(v3);
+		Vector u1 = v2.subtract(v1);
+		Vector u2 = v3.subtract(v2);
+
 		normal = u1.crossProduct(u2).normalize();
 	}
 
