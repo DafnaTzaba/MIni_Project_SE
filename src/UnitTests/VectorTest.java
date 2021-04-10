@@ -12,6 +12,10 @@ public class VectorTest {
 
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#add(primitives.Vector)}.
+     */
+
 	public void testAdd() {
         // ============ Equivalence Partitions Tests ==============
 		 Vector v1=new Vector(1d,1d,1d);
@@ -29,6 +33,9 @@ public class VectorTest {
 	}
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#subtract(primitives.Vector)}.
+     */
 	public void testSubtract() {
         // ============ Equivalence Partitions Tests ==============
 		 Vector v1=new Vector(1d,1d,1d);
@@ -45,6 +52,9 @@ public class VectorTest {
 	}
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#scale(primitives.Vector)}.
+     */
 	public void testScale() {
 		// ============ Equivalence Partitions Tests ==============
 				 Vector v1=new Vector(1d,1d,1d);
@@ -60,6 +70,9 @@ public class VectorTest {
 	}
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}.
+     */
 	public void testDotProduct() {
 		 // ============ Equivalence Partitions Tests ==============
 		 Vector v1=new Vector(1d,1d,1d);
@@ -75,6 +88,9 @@ public class VectorTest {
 	}
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
+     */
 	public void testCrossProduct() {
         Vector v1 = new Vector(1, 2, 3);
 
@@ -105,6 +121,9 @@ public class VectorTest {
 	
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#lengthSquared()}.
+     */
 	public void testLengthSquared() {
 		   // ============ Equivalence Partitions Tests ==============
 				 Vector v1=new Vector(1d,6d,9d);
@@ -113,7 +132,9 @@ public class VectorTest {
 			   
 	
 	}
-
+	/**
+     * Test method for {@link primitives.Vector#length()}.
+     */
 	@Test
 	public void testLength() {
 		   // ============ Equivalence Partitions Tests ==============
@@ -123,6 +144,9 @@ public class VectorTest {
 	}
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#normalize()}.
+     */
 	public void testNormalize() {
 		   // ============ Equivalence Partitions Tests ==============
 		Vector v = new Vector(1, 2, 3);
@@ -134,6 +158,9 @@ public class VectorTest {
 	}
 
 	@Test
+	/**
+     * Test method for {@link primitives.Vector#normalized()}.
+     */
 	public void testNormalized() {
 		   // ============ Equivalence Partitions Tests ==============
 				Vector v = new Vector(1, 2, 3);

@@ -26,6 +26,6 @@ public class Triangle extends Polygon {
 	
 	@Override
 	public Vector getNormal(Point3D point) {
-		return null;
+		return plane.getNormal(point);
 	}
 }

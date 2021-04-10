@@ -12,6 +12,9 @@ public class PlaneTest {
 
 
 	@Test
+	/**
+     * Test method for {@link geometries.Plane#Plane(Point3D, Point3D, Point3D)}.
+     */
 	public void testPlanePoint3DPoint3DPoint3D() {
         // ============ Equivalence Partitions Tests ==============
 		Point3D p1=new Point3D(1,2,3);
@@ -52,6 +55,9 @@ public class PlaneTest {
 
 
 	@Test
+	/**
+     * Test method for {@link geometries.Plane#getNormal(Point3D)}.
+     */
 	public void testGetNormalPoint3D() {
 		 // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here

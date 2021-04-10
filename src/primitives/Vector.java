@@ -166,5 +166,6 @@ public class Vector {
 		Vector v = new Vector(head);
 		return v.normalize();
 	}
+	
 
 }

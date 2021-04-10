@@ -3,7 +3,7 @@ package primitives;
 public class Ray {
 	
 	/**
-	 * ray class. tow variables- point start and vector
+	 * ray class. two variables- point start and vector
 	 */
 	private Point3D p0;
 	private Vector dir;

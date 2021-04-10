@@ -11,6 +11,9 @@ import primitives.Vector;
 public class TriangleTest {
 
 	@Test
+	/**
+     * Test method for {@link geometries.Triangle#getNormal(Point3D) }.
+     */
 	public void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here
