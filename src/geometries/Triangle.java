@@ -1,6 +1,9 @@
 package geometries;
 
+import java.util.List;
+
 import primitives.Point3D;
+import primitives.Ray;
 import primitives.Vector;
 
 public class Triangle extends Polygon {
@@ -27,5 +30,9 @@ public class Triangle extends Polygon {
 	@Override
 	public Vector getNormal(Point3D point) {
 		return plane.getNormal(point);
+	}
+	
+	public List<Point3D> findIntsersections(Ray ray) {
+		return null;
 	}
 }

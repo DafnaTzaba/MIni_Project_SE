@@ -25,6 +25,11 @@ public final class Coordinate {
         // if it too close to zero make it zero
         this.coord = alignZero(coord);
     }
+    
+    public double getCoord()
+    {
+    	return coord;
+    }
 
     /*************** Admin *****************/
     @Override
