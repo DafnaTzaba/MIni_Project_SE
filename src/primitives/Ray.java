@@ -65,11 +65,13 @@ public class Ray {
 	/**
 	 * return new point that p0+v*scalar
 	 */
-	   public Point3D ScalarPoint(double scalar ){
-	        if (isZero(scalar)){
+	   public Point3D getPoint(double t ){
+	        if (isZero(t)){
 	            return  p0;
 	        }
-	        return p0.add(dir.scale(scalar));
+	        return p0.add(dir.scale(t));
 	    }
+	   
+	 
 
 }

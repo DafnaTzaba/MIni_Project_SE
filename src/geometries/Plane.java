@@ -96,7 +96,7 @@ public class Plane implements Geometry {
 	            return  null;
 	        }
 
-	        Point3D point = ray.ScalarPoint(t);
+	        Point3D point = ray.getPoint(t);
 
 	        return List.of(point);
 	}

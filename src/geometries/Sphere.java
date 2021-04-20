@@ -73,17 +73,17 @@ public class Sphere implements Geometry {
 
         if (t1 > 0 && t2 > 0) {
 
-            Point3D P1 =ray.ScalarPoint(t1);
-            Point3D P2 =ray.ScalarPoint(t2);
+            Point3D P1 =ray.getPoint(t1);
+            Point3D P2 =ray.getPoint(t2);
             return List.of(P1, P2);
         }
         if (t1 > 0) {
 
-            Point3D P1 =ray.ScalarPoint(t1);
+            Point3D P1 =ray.getPoint(t1);
             return List.of(P1);
         }
         if (t2 > 0) {
-            Point3D P2 =ray.ScalarPoint(t2);
+            Point3D P2 =ray.getPoint(t2);
             return List.of(P2);
         }
         return null;
