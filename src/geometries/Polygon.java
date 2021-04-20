@@ -89,6 +89,46 @@ public class Polygon implements Geometry {
 	}
 	
 	public List<Point3D> findIntsersections(Ray ray) {
-		return null;
-	}
+		 List<Point3D> result = plane.findIntsersections(ray);
+
+	        if (result == null) {
+	            return result;
+	        }
+
+	        //our ray
+	        Point3D P0 = ray.getP0();
+	        Vector v = ray.getDir();
+
+	        //points instructions
+	        Point3D P1 = vertices.get(1);
+	        Point3D P2 = vertices.get(0);
+
+	        Vector v1 = P1.subtract(P0);
+	        Vector v2 = P2.subtract(P0);
+
+	        //if they orthogonal
+	        double sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
+
+	        if (isZero(sign)) {
+	            return null;
+	        }
+
+	        boolean positive = sign > 0;
+
+	        //iterate through all vertices of the polygon
+	        for (int i = vertices.size() - 1; i > 0; --i) {
+	            v1 = v2;
+	            v2 = vertices.get(i).subtract(P0);
+
+	            sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
+	            if (isZero(sign)) {
+	                return null;
+	            }
+
+	            if (positive != (sign > 0)) {
+	                return null;
+	            }
+	        }
+
+	        return result;	}
 }

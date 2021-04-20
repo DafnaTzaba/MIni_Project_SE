@@ -1,5 +1,5 @@
 package primitives;
-
+import static primitives.Util.*;
 public class Ray {
 	
 	/**
@@ -55,9 +55,21 @@ public class Ray {
 		return p0.equals(toSendRay.p0) && dir.equals(toSendRay.dir);
 	}
 
+	
 	@Override
 	public String toString() {
 		return "{" + p0 + " " + dir + "}";
 	}
+	
+	
+	/**
+	 * return new point that p0+v*scalar
+	 */
+	   public Point3D ScalarPoint(double scalar ){
+	        if (isZero(scalar)){
+	            return  p0;
+	        }
+	        return p0.add(dir.scale(scalar));
+	    }
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
-
+import static primitives.Util.*;
 public class Plane implements Geometry {
 	/**
 	 * point on the plane and normal
@@ -63,6 +63,41 @@ public class Plane implements Geometry {
 	}
 
 	public List<Point3D> findIntsersections(Ray ray) {
-		return null;
+		 Point3D P0 = ray.getP0();
+	        Vector v = ray.getDir();
+
+	        Vector n = normal;
+
+	        if(q0.equals(P0)){
+	            return  null;
+	        }
+
+	        Vector P0_Q0 = q0.subtract(P0);
+
+	       //numerator
+	        double nP0Q0  = alignZero(n.dotProduct(P0_Q0));
+
+	        //ray is lying in the plane axis. because the vectors are ortogonal
+	        if (isZero(nP0Q0 )){
+	            return null;
+	        }
+
+	        //denominator
+	        double nv = alignZero(n.dotProduct(v));
+
+	        // ray is lying in the plane axis
+	        if(isZero(nv)){
+	            return null;
+	        }
+
+	        double  t = alignZero(nP0Q0  / nv);
+
+	        if (t <=0){
+	            return  null;
+	        }
+
+	        Point3D point = ray.ScalarPoint(t);
+
+	        return List.of(point);
 	}
 }

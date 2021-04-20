@@ -33,6 +33,6 @@ public class Triangle extends Polygon {
 	}
 	
 	public List<Point3D> findIntsersections(Ray ray) {
-		return null;
+        return super.findIntsersections(ray);
 	}
 }
