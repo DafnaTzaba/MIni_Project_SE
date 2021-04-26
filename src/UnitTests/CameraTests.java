@@ -17,16 +17,22 @@ public class CameraTests {
 
 	/**
 	 * Test method for
-	 * {@link elements.Camera#constructRayThroughPixel(int, int, int, int)}.
+	 * {@link elements.Camera#constructRayThroughPixel()}.
 	 */
 	@Test
 	public void testConstructRayThroughPixel() {
-		Camera camera = new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)).setDistance(10);
+		Camera camera = new Camera.BuilderCamera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0))
+				.setDistance(10)
+				.setViewPlaneHeight(6)
+                .setViewPlaneWidth(6)
+                .build();
+		 
 
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: 3X3 Corner (0,0)
+		camera.setViewPlaneSize(6, 6);
 		assertEquals("Bad ray", new Ray(Point3D.ZERO, new Vector(-2, -2, 10)),
-				camera.setViewPlaneSize(6, 6).constructRayThroughPixel(3, 3, 0, 0));
+				camera.constructRayThroughPixel(3, 3, 0, 0));
 
 		// TC02: 4X4 Corner (0,0)
 		assertEquals("Bad ray", new Ray(Point3D.ZERO, new Vector(-3, -3, 10)),
