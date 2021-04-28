@@ -1,5 +1,7 @@
 package primitives;
 import static primitives.Util.*;
+
+import java.util.List;
 public class Ray {
 	
 	/**
@@ -72,6 +74,35 @@ public class Ray {
 	        return p0.add(dir.scale(t));
 	    }
 	   
+	   /**
+	    * func to find the closer point to the head of the ray.
+	    * @param points list of points on ray
+	    * @return the closer point to p0- ray head
+	    */
+	   public Point3D findClosestPoint (List<Point3D> points) {
+		   double minDistance=999999;
+		   Point3D closerPoint=null;
+		   double distance=0;
+		   
+		   if(points== null){
+	            return null;
+	        }
+		   for(int i=0;i<points.size();i++ )
+		   {
+			   distance=p0.distance(points.get(i));
+			   if(distance<minDistance)
+			   {
+				   minDistance=distance;
+				   closerPoint=points.get(i);
+			   }
+		   }
+		   		   
+		return closerPoint;
+	   }
+	   
+	   
+	   
+}
 	 
 
-}
+

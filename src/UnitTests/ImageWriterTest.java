@@ -20,9 +20,9 @@ public class ImageWriterTest {
                 }
                 // 500/10 = 50
                 else if (j % 50 == 0) {
-                    imageWriter_.writePixel(i, j, Color.BLACK);
+                    imageWriter_.writePixel(i, j, Color.WHITE);
                 } else {
-                    imageWriter_.writePixel(i, j, Color.PINK);
+                    imageWriter_.writePixel(i, j, Color.GREEN);
                 }
             }
         }
