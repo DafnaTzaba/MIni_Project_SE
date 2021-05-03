@@ -6,7 +6,7 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 import static primitives.Util.*;
-public class Sphere implements Geometry {
+public class Sphere extends Geometry {
 	/**
 	 * point to center of the sphere and radius
 	 */
