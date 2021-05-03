@@ -7,7 +7,7 @@ import primitives.Vector;
 import static primitives.Util.isZero;
 
 import java.util.List;
-public class Tube implements Geometry {
+public class Tube extends Geometry {
 
 	/**
 	 * variable for Ray
