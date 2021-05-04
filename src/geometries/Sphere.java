@@ -89,10 +89,21 @@ public class Sphere extends Geometry {
         return null;
 	}
 
+	/**
+	 * return intersection points between the ray and our geometry
+	 */
 	@Override
 	public List<GeoPoint> findGeoIntersections(Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		List<Point3D> findInter= findIntsersections(ray);
+		if(findInter==null)
+			return null;
+		List<GeoPoint> geopoint=null;
+		for(int i=0;i<findInter.size();i++)
+		{
+			geopoint.add(new GeoPoint(this,findInter.get(i)));
+		}			
+		return geopoint;
 	}
 
 }
