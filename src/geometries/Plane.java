@@ -100,7 +100,7 @@ public class Plane extends Geometry {
 		Point3D point = ray.getPoint(t);
 
 		return List.of(point);
-	}
+	}///
 
 	/**
 	 * return intersection points between the ray and our geometry
