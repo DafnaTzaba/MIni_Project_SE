@@ -1,6 +1,8 @@
 package geometries;
 
 import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.*;
 import static primitives.Util.*;
 
@@ -135,7 +137,15 @@ public class Polygon extends Geometry {
 	@Override
 	public List<GeoPoint> findGeoIntersections(Ray ray)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		List<Point3D> findInter = findIntsersections(ray);
+		if(findInter==null)
+			return null;
+		List<GeoPoint> geopoint = List.of(new GeoPoint(this,findInter.get(1))) ;
+		for(int i=1;i<findInter.size();i++)
+		{
+			geopoint.add(new GeoPoint(this,findInter.get(i)));
+		}			
+		return geopoint;
+		
 	}
 }

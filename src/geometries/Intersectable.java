@@ -14,6 +14,8 @@ import primitives.Point3D;
 public interface Intersectable {
 	
 	List<Point3D> findIntsersections(Ray ray);
+	
+
 	/**
 	 * 
 	 * @param ray

@@ -98,8 +98,8 @@ public class Sphere extends Geometry {
 		List<Point3D> findInter= findIntsersections(ray);
 		if(findInter==null)
 			return null;
-		List<GeoPoint> geopoint=null;
-		for(int i=0;i<findInter.size();i++)
+		List<GeoPoint> geopoint = List.of(new GeoPoint(this,findInter.get(1))) ;
+		for(int i=1;i<findInter.size();i++)
 		{
 			geopoint.add(new GeoPoint(this,findInter.get(i)));
 		}			
