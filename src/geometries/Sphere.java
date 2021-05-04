@@ -89,4 +89,10 @@ public class Sphere extends Geometry {
         return null;
 	}
 
+	@Override
+	public List<GeoPoint> findGeoIntersections(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

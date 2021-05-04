@@ -148,4 +148,10 @@ public class Tube extends Geometry {
 
 
 	}
+
+	@Override
+	public List<GeoPoint> findGeoIntersections(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -100,4 +100,10 @@ public class Plane extends Geometry {
 
 	        return List.of(point);
 	}
+
+	@Override
+	public List<GeoPoint> findGeoIntersections(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
