@@ -77,7 +77,7 @@ public class Vector {
 	 * @return the new vector
 	 */
 	public Vector scale(double po) {
-		return new Vector(head.getX().coord * po, head.getY().coord * po, head.getZ().coord * po);
+		return new Vector(head.x.coord * po, head.y.coord * po, head.z.coord * po);
 	}
 
 	  /**
@@ -88,8 +88,8 @@ public class Vector {
      */
 
 	public double dotProduct(Vector v) {
-		return head.getX().coord * v.head.getX().coord + head.getY().coord * v.head.getY().coord
-				+ head.getZ().coord * v.head.getZ().coord;
+		return head.x.coord * v.head.x.coord + head.y.coord * v.head.y.coord
+				+ head.z.coord * v.head.z.coord;
 	}
 
 	/**
@@ -113,13 +113,13 @@ public class Vector {
      */
 
 	public Vector crossProduct(Vector vec) {
-		double x1 = head.getX().coord;
-		double y1 = head.getY().coord;
-		double z1 = head.getZ().coord;
+		double x1 = head.x.coord;
+		double y1 = head.y.coord;
+		double z1 = head.z.coord;
 
-		double x2 = vec.getHead().getX().coord;
-		double y2 = vec.getHead().getY().coord;
-		double z2 = vec.getHead().getZ().coord;
+		double x2 = vec.getHead().x.coord;
+		double y2 = vec.getHead().y.coord;
+		double z2 = vec.getHead().z.coord;
 
 		return new Vector(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
 
@@ -130,8 +130,8 @@ public class Vector {
 	 * @return the length
 	 */
 	public double lengthSquared() {
-		return (head.getX().coord * head.getX().coord + head.getY().coord * head.getY().coord
-				+ head.getZ().coord * head.getZ().coord);
+		return (head.x.coord * head.x.coord + head.y.coord * head.y.coord
+				+ head.z.coord * head.z.coord);
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class Vector {
 	 */
 	public Vector normalize() {
 		double length = this.length();
-		this.head = new Point3D(head.getX().coord / length, head.getY().coord / length, head.getZ().coord / length);
+		this.head = new Point3D(head.x.coord / length, head.y.coord / length, head.z.coord / length);
 		return this;
 	}
 

@@ -195,7 +195,7 @@ public class Camera {
 			return this;
 		}
 
-		public Camera build() {
+		public Camera build(){//check*********************************
 			Camera camera = new Camera(this);
 			return camera;
 		}

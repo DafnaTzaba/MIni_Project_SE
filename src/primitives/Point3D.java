@@ -10,42 +10,26 @@ public class Point3D {
 	/**
 	 * point field (x,y,z)
 	 */
-	private Coordinate x;
-	private Coordinate y;
-	private Coordinate z;
+	Coordinate x;
+	Coordinate y;
+	Coordinate z;
 
 	/**
 	 * getters
 	 * 
 	 * @return x,y,z
 	 */
-	public Coordinate getX() {
-		return x;
+	public double getX() {
+		return x.coord;
 	}
 
-	public Coordinate getY() {
-		return y;
+	public double getY() {
+		return y.coord;
 	}
 
-	public Coordinate getZ() {
-		return z;
+	public double getZ() {
+		return z.coord;
 	}
-
-	/**
-	 * constructor
-	 * @param a coordinate value for x
-	 * @param b coordinate value for y
-	 * @param c coordinate value for z
-	 */
-	public Point3D(Coordinate a, Coordinate b, Coordinate c) {
-		x = a;
-		y = b;
-		z = c;
-	}
-
-	/*
-	 * public Point3D(Point3D a) //copy constructor { x=a.x; y=a.y; z=a.z; }
-	 */
 
 	/**
 	 * primary constructor for Point3D
@@ -62,8 +46,9 @@ public class Point3D {
 
 	/**
 	 * override func equals to Point3D
-	 *   @param o Object (basically another Point3d) to compare
-     *   @return true or false accordingly
+	 * 
+	 * @param o Object (basically another Point3d) to compare
+	 * @return true or false accordingly
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -77,7 +62,6 @@ public class Point3D {
 		return this.x.equals(other.x) && this.y.equals(other.y) && this.z.equals(other.z);
 	}
 
-	
 	@Override
 	public String toString() {
 		return "(" + x + "," + y + "," + z + ")";
@@ -87,6 +71,7 @@ public class Point3D {
 
 	/**
 	 * to sub point from our point
+	 * 
 	 * @param point to sub from our exsis point
 	 * @return the new point after sub
 	 */
@@ -100,6 +85,7 @@ public class Point3D {
 
 	/**
 	 * to add vector to point
+	 * 
 	 * @param v = vector to add to our point
 	 * @return the new point after addition
 	 */
@@ -109,12 +95,10 @@ public class Point3D {
 		return point;
 	}
 
-
-
-    /**
-     * @param other
-     * @return (x2 - x1)^2 + (y2-y1)^2 + (z2-z1)^2
-     */
+	/**
+	 * @param other
+	 * @return (x2 - x1)^2 + (y2-y1)^2 + (z2-z1)^2
+	 */
 
 	public double distanceSquared(Point3D point) {
 		Point3D Pdistance = new Point3D(x.coord - point.x.coord, y.coord - point.y.coord, z.coord - point.z.coord);
@@ -122,12 +106,10 @@ public class Point3D {
 				+ Pdistance.z.coord * Pdistance.z.coord);
 	}
 
-
-
-    /**
-     * @param point3D
-     * @return calucate distance between 2  3D points
-     */
+	/**
+	 * @param point3D
+	 * @return calucate distance between 2 3D points
+	 */
 	public double distance(Point3D point) {
 		return Math.sqrt(distanceSquared(point));
 	}
