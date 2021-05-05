@@ -107,11 +107,44 @@ public class Plane extends Geometry {
 	 */
 	@Override
 	public List<GeoPoint> findGeoIntersections(Ray ray) {
-		List<Point3D> findInt = findIntsersections(ray);
-		if (findInt == null)
-			return null;
-		List<GeoPoint> ListGeoPoint = List.of(new GeoPoint(this, findInt.get(0)));
+		
+		Point3D P0 = ray.getP0();
+		Vector v = ray.getDir();
 
-		return ListGeoPoint;
+		Vector n = normal;
+
+		if (q0.equals(P0)) {
+			return null;
+		}
+
+		Vector P0_Q0 = q0.subtract(P0);
+
+		// numerator
+		double nP0Q0 = alignZero(n.dotProduct(P0_Q0));
+
+		// ray is lying in the plane axis. because the vectors are ortogonal
+		if (isZero(nP0Q0)) {
+			return null;
+		}
+
+		// denominator
+		double nv = alignZero(n.dotProduct(v));
+
+		// ray is lying in the plane axis
+		if (isZero(nv)) {
+			return null;
+		}
+
+		double t = alignZero(nP0Q0 / nv);
+
+		if (t <= 0) {
+			return null;
+		}
+
+		Point3D point = ray.getPoint(t);
+
+		return List.of(new GeoPoint(this,point));
+		
+	
 	}
 }

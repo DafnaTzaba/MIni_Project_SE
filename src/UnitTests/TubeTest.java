@@ -11,7 +11,7 @@ import static primitives.Util.isZero;
 
 import java.util.List;
 
-class TubeTest {
+public class TubeTest {
 
 	private void assertNull(Object o, String msg) {
 		org.junit.Assert.assertNull(msg, o);

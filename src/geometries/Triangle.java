@@ -35,4 +35,8 @@ public class Triangle extends Polygon {
 	public List<Point3D> findIntsersections(Ray ray) {
         return super.findIntsersections(ray);
 	}
+	
+	public List<GeoPoint> findGeoIntsersections(Ray ray){
+		return super.findGeoIntersections(ray);
+	}
 }

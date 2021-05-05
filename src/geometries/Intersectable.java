@@ -31,7 +31,7 @@ public interface Intersectable {
 	    public Geometry geometry;
 	    public Point3D point;
 	    
-	    GeoPoint(Geometry geo,Point3D po)
+	    public GeoPoint(Geometry geo,Point3D po)
 	    {
 	    	geometry=geo;
 	    	point=po;

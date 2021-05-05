@@ -44,7 +44,7 @@ public class SphereTest {
         List<Point3D> exp = List.of(p1, p2);   
         
         assertEquals("Wrong number of points", 2, result.size());
-        if (result.get(0).getX().getCoord() > result.get(1).getX().getCoord())
+        if (result.get(0).getX() > result.get(1).getX())
             result = List.of(result.get(1), result.get(0));      
         assertEquals("Ray crosses sphere" ,exp, result);
         
@@ -75,7 +75,7 @@ public class SphereTest {
         List<Point3D> exp13 = List.of(p13, p23);   
         
         assertEquals("Wrong number of points", 2, result13.size());
-        if (result13.get(0).getX().getCoord() > result13.get(1).getX().getCoord())
+        if (result13.get(0).getX() > result13.get(1).getX())
             result13 = List.of(result13.get(1), result13.get(0));      
         assertEquals("Ray crosses sphere" ,exp13, result13);
         

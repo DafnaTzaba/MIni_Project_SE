@@ -1,5 +1,8 @@
 package geometries;
 
+import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -39,6 +42,10 @@ public class Cylinder extends Tube {
 	@Override
 	public String toString() {
 		return super.toString() + "height: " + height;
+	}
+	
+	public List<GeoPoint> findGeoIntsersections(Ray ray){
+		return super.findGeoIntersections(ray);
 	}
 
 }

@@ -1,6 +1,9 @@
 package primitives;
 import static primitives.Util.*;
 
+import geometries.Geometry;
+import geometries.Intersectable.GeoPoint;
+
 import java.util.List;
 public class Ray {
 	
@@ -98,6 +101,31 @@ public class Ray {
 		   }
 		   		   
 		return closerPoint;
+	   }
+	   
+	   public GeoPoint getClosestGeoPoint(List<GeoPoint> geo) {
+		   
+		   double minDistance=999999;
+		   Point3D closerPoint=null;
+		   Geometry geometr=null;
+		   double distance=0;
+		   
+		   if(geo== null){
+	            return null;
+	        }
+		   for(int i=0;i<geo.size();i++ )
+		   {
+			   distance=p0.distance(geo.get(i).point);
+			   if(distance<minDistance)
+			   {
+				   minDistance=distance;
+				   closerPoint=geo.get(i).point;
+				   geometr=geo.get(i).geometry;
+			   }
+		   }
+		   		 
+		return (new GeoPoint(geometr,closerPoint));
+		   
 	   }
 	   
 	   
