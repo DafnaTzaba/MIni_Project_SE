@@ -18,7 +18,7 @@ public abstract class Geometry implements Intersectable  {
 	  * get the emmision's field
 	  * @return the field emmission
 	  */
-	 public Color GetEmmission()
+	 public Color getEmmission()
 	 {
 		 return emmission;
 	 }
@@ -27,7 +27,7 @@ public abstract class Geometry implements Intersectable  {
 	  * To update the field emmission
 	  * @return the object
 	  */
-	 public Geometry SetEmmission(Color newColor)
+	 public Geometry setEmission(Color newColor)
 	 {
 		 emmission=newColor;
 		 return this;

@@ -51,18 +51,17 @@ public class RayTest {
 	@Test
 	public void testgetClosestGeoPoint() {
 		Ray ray1 = new Ray(new Point3D(0, 0, 10), new Vector(1, 10, -100));
-		Sphere sphere=new Sphere(new Point3D(1,1,1),10);
-		
+	
 
         List<GeoPoint> list = new LinkedList<GeoPoint>();
-        list.add(new GeoPoint(,(1, 1, -100));
-        list.add(new GeoPoint(-1, 1, -99));
-        list.add(new GeoPoint(0, 2, -10));
-        list.add(new GeoPoint(0.5, 0, -100));
+        list.add(new GeoPoint(new Sphere(new Point3D(1,1,-100),2),new Point3D(1, 1, -100)));
+        list.add(new GeoPoint( new Sphere(new Point3D(-1,1,-99),2),new Point3D(-1, 1, -99)));
+        list.add(new GeoPoint(new Sphere(new Point3D(0,2,-10),2),new Point3D(0, 2, -10)));
+        list.add(new GeoPoint(new Sphere(new Point3D(0.5,0,-100),2),new Point3D(0.5, 0, -100)));
 		
         // ============ Equivalence Partitions Tests ==============
 		//T01: A point in the middle of the list is closest to the beginning of the fund
-        assertEquals("point in the middle of the list", new Point3D(0, 2, -10) ,ray1.getClosestGeoPoint(list));
+        assertEquals("point in the middle of the list", new Point3D(0, 2, -10) ,ray1.getClosestGeoPoint(list).point);
         
         // =============== Boundary Values Tests ==================
 		//T02: empty point list

@@ -6,7 +6,7 @@ import elements.Camera;
 import primitives.Color;
 import primitives.Ray;
 import scene.Scene;
-
+import geometries.Intersectable.GeoPoint;
 /**
  * to creat from scene colors matrix
  * 
@@ -42,7 +42,7 @@ public class Render {
 
 	/**
 	 * Goes through a loop on our screen. For each pixel a beam will be built and for each beam we will get a color from the horn comb.
-	 *  The women color in the appropriate pixel of the image manufacturer
+	 *  The  color in the appropriate pixel of the image manufacturer
 	 */
 	public void renderImage() {
 		try {
