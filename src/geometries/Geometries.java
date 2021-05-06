@@ -32,26 +32,7 @@ public class Geometries implements Intersectable  {
 
 	}
 	
-	/**
-	 * return all points intersection that we have with the geometries that we get
-	 */
-	@Override
-	public List<Point3D> findIntsersections(Ray ray) {
-		 List<Point3D> result = null;
-	        for (Intersectable item : geoIntersectable) {
-	            //get intersections points of a particular item from _intersectables
-	            List<Point3D> itemPoints = item.findIntsersections(ray);
-	            if(itemPoints!= null){
-	                //first time initialize result to new LinkedList
-	                if(result== null){
-	                    result= new LinkedList<>();
-	                }
-	                //add all item points to the resulting list
-	                result.addAll(itemPoints);
-	            }
-	        }
-	        return result;
-	}
+	
 	public List<Intersectable> getGeo() {
 		return geoIntersectable;
 	}

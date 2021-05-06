@@ -32,9 +32,7 @@ public class Triangle extends Polygon {
 		return plane.getNormal(point);
 	}
 	
-	public List<Point3D> findIntsersections(Ray ray) {
-        return super.findIntsersections(ray);
-	}
+	
 	
 	public List<GeoPoint> findGeoIntsersections(Ray ray){
 		return super.findGeoIntersections(ray);

@@ -2,6 +2,7 @@ package geometries;
 import primitives.Ray;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import primitives.Point3D;
 
@@ -13,7 +14,12 @@ import primitives.Point3D;
 
 public interface Intersectable {
 	
-	List<Point3D> findIntsersections(Ray ray);
+	default List<Point3D> findIntsersections(Ray ray) {
+	    var geoList = findGeoIntersections(ray);
+	    return geoList == null ? null
+	                           : geoList.stream().map(gp -> gp.point).collect(Collectors.toList());
+	}
+
 	
 
 	/**
