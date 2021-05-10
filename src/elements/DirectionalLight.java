@@ -21,13 +21,17 @@ public class DirectionalLight extends Light implements LightSource {
 	}
 
 	public Color getIntensity(Point3D p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Color I0=super.getIntensity();
+		return I0;
+		}
 
+	/**
+	 * like sun. return the direction of the light. 
+	 */
+	@Override
 	public Vector getL(Point3D p) {
-		// TODO Auto-generated method stub
-		return null;
+		return direction; //return normal direction
 	}
 
+	
 }

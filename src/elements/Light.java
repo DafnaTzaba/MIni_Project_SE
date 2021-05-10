@@ -8,9 +8,9 @@ import primitives.Point3D;
  * @author Herout Rozilyo
  *
  */
-public abstract class Light 
+ abstract class Light 
  {
-	 private Color intensity;
+	 private Color intensity=Color.BLACK;
 	 
 	 /**
 	  * constructor of the class

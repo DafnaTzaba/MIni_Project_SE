@@ -1,9 +1,9 @@
 package elements;
 
-import java.util.Vector;
 
 import primitives.Color;
 import primitives.Point3D;
+import primitives.Vector;
 
 /**
  * Light source source interface
