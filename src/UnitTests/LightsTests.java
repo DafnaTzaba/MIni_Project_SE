@@ -1,6 +1,5 @@
 package UnitTests;
 
-
 import org.junit.Test;
 
 import elements.*;
@@ -14,24 +13,21 @@ import scene.Scene;
  * 
  * @author Dan
  */
+
 public class LightsTests {
 	private Scene scene1 = new Scene("Test scene");
 	private Scene scene2 = new Scene("Test scene") //
-			.setAmbientLight(new AmbientLight(new Color(Color.WHITE), 0.15));
-	
-	private Camera camera1 = new Camera.BuilderCamera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0))
-			.setDistance(1000)
+			.setAmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
+	private Camera camera1 = new Camera.BuilderCamera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
 			.setViewPlaneHeight(150)
-            .setViewPlaneWidth(150)
-            .build();
-	 
-	
-	private Camera camera2 = new Camera.BuilderCamera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0))
-	.setDistance(1000)
-	.setViewPlaneHeight(200)
-    .setViewPlaneWidth(200)
-    .build();
-	
+			.setViewPlaneWidth(150)//
+			.setDistance(1000)
+			.build();
+	private Camera camera2 = new Camera.BuilderCamera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+			.setViewPlaneHeight(200)
+			.setViewPlaneWidth(200)
+			.setDistance(1000)
+			.build();
 
 	private static Geometry triangle1 = new Triangle( //
 			new Point3D(-150, -150, -150), new Point3D(150, -150, -150), new Point3D(75, 75, -150));
@@ -64,9 +60,9 @@ public class LightsTests {
 	@Test
 	public void spherePoint() {
 		scene1.geometries.add(sphere);
-		scene1.lights.add(new PointLight(new Color(500,300,0),new Point3D(-50,-50,-50))
-				.setKl(0.00001)
-				.setKq(0.000001));
+		scene1.lights.add(new PointLight(new Color(500, 300, 0), new Point3D(-50, -50, 50))//
+				.setKl(0.00001).setKq(0.000001));
+
 		ImageWriter imageWriter = new ImageWriter("lightSpherePoint", 500, 500);
 		Render render = new Render()//
 				.setImageWriter(imageWriter) //
@@ -142,43 +138,6 @@ public class LightsTests {
 				.setKl(0.0001).setKq(0.000005));
 
 		ImageWriter imageWriter = new ImageWriter("lightTrianglesSpot", 500, 500);
-		Render render = new Render()//
-				.setImageWriter(imageWriter) //
-				.setCamera(camera2) //
-				.setRayTracer(new RayTracerBasic(scene2));
-		render.renderImage();
-		render.writeToImage();
-	}
-
-	/**
-	 * Produce a picture of a sphere lighted by a narrow spot light
-	 */
-	@Test
-	public void sphereSpotSharp() {
-		scene1.geometries.add(sphere);
-		scene1.lights.add(new SpotLight(new Color(500, 300, 0), new Point3D(-50, -50, 50), new Vector(1, 1, -2)) //
-				.setNarrowBeam(5).setKl(0.000005).setKq(0.00000025));
-
-		ImageWriter imageWriter = new ImageWriter("lightSphereSpotSharp", 500, 500);
-		Render render = new Render()//
-				.setImageWriter(imageWriter) //
-				.setCamera(camera1) //
-				.setRayTracer(new RayTracerBasic(scene1));
-		render.renderImage();
-		render.writeToImage();
-	}
-
-	/**
-	 * Produce a picture of a two triangles lighted by a narrow spot light
-	 */
-	@Test
-	public void trianglesSpotSharp() {
-		scene2.geometries.add(triangle1.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(300)),
-				triangle2.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(300)));
-		scene2.lights.add(new SpotLight(new Color(800, 400, 400), new Point3D(10, -10, -130), new Vector(-2, -2, -1)) //
-				.setNarrowBeam(5).setKl(0.00005).setKq(0.0000025));
-
-		ImageWriter imageWriter = new ImageWriter("lightTrianglesSpotSharp", 500, 500);
 		Render render = new Render()//
 				.setImageWriter(imageWriter) //
 				.setCamera(camera2) //
