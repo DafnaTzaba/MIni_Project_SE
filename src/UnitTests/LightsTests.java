@@ -33,6 +33,8 @@ public class LightsTests {
 			new Point3D(-150, -150, -150), new Point3D(150, -150, -150), new Point3D(75, 75, -150));
 	private static Geometry triangle2 = new Triangle( //
 			new Point3D(-150, -150, -150), new Point3D(-70, 70, -50), new Point3D(75, 75, -150));
+	private static Geometry triangle3 = new Triangle( //
+			new Point3D(-150, -150, -150), new Point3D(-100, 70, -100), new Point3D(75, 75, -150));
 	private static Geometry sphere = new Sphere(new Point3D(0, 0, -50),50) //
 			.setEmission(new Color(java.awt.Color.BLUE)) //
 			.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(100));
@@ -71,6 +73,9 @@ public class LightsTests {
 		render.renderImage();
 		render.writeToImage();
 	}
+	
+	
+	
 
 	/**
 	 * Produce a picture of a sphere lighted by a spot light
@@ -117,6 +122,7 @@ public class LightsTests {
 				triangle2.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(300)));
 		scene2.lights.add(new PointLight(new Color(500, 250, 250), new Point3D(10, -10, -130)) //
 				.setKl(0.0005).setKq(0.0005));
+		
 
 		ImageWriter imageWriter = new ImageWriter("lightTrianglesPoint", 500, 500);
 		Render render = new Render()//
@@ -126,9 +132,34 @@ public class LightsTests {
 		render.renderImage();
 		render.writeToImage();
 	}
+	
+	private static Geometry triangle4 = new Triangle( //
+			new Point3D(-70, -70, -70), new Point3D(70, -70, -70), new Point3D(45, 45, -45));
+	private static Geometry triangle5 = new Triangle( //
+			new Point3D(90, 60, -85), new Point3D(40, -100, -30), new Point3D(40, -50, 40));
+	
+	@Test
+	public void triangAllLight() {
+		
+		
+		scene2.geometries.add(triangle4.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(300)), //
+				triangle5.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(300)));
+		scene2.lights.add(new PointLight(new Color(500, 250, 250), new Point3D(1, 10, 0)) //
+				.setKl(0.0005).setKq(0.0005));
+		scene2.lights.add(new DirectionalLight(new Color(300, 150, 150), new Vector(0, 0, -1)));
+		scene2.lights.add(new SpotLight(new Color(500, 250, 250), new Point3D(100, -60, 130), new Vector(-2, -2, -1)) //
+				.setKl(0.0001).setKq(0.000005));
+		ImageWriter imageWriter = new ImageWriter("AllLightTrianglesPoint", 500, 500);
+		Render render = new Render()//
+				.setImageWriter(imageWriter) //
+				.setCamera(camera2) //
+				.setRayTracer(new RayTracerBasic(scene2));
+		render.renderImage();
+		render.writeToImage();
+	}
 
 	/**
-	 * Produce a picture of a two triangles lighted by a spot light
+	 * Produce a picture of a sphere lighted by all the lights
 	 */
 	@Test
 	public void trianglesSpot() {
@@ -142,6 +173,26 @@ public class LightsTests {
 				.setImageWriter(imageWriter) //
 				.setCamera(camera2) //
 				.setRayTracer(new RayTracerBasic(scene2));
+		render.renderImage();
+		render.writeToImage();
+	}
+	/**
+	 * 
+	 */
+	@Test
+	public void AllLightSphere(){
+		scene1.geometries.add(sphere);
+		scene1.lights.add(new PointLight(new Color(100, 250, 0), new Point3D(-500, -80, -60))//
+				.setKl(0.0001).setKq(0.000001));
+		scene1.lights.add(new SpotLight(new Color(350, 300, 0), new Point3D(100, -21, -25), new Vector(200, 9, -2)) //
+				.setKl(0.00001).setKq(0.00000001));
+		scene1.lights.add(new DirectionalLight(new Color(700, 300, 0), new Vector(1, 1, -10)));
+		
+		ImageWriter imageWriter = new ImageWriter("AllLight", 500, 500);
+		Render render = new Render()//
+				.setImageWriter(imageWriter) //
+				.setCamera(camera1) //
+				.setRayTracer(new RayTracerBasic(scene1));
 		render.renderImage();
 		render.writeToImage();
 	}
