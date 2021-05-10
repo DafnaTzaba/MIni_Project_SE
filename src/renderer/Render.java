@@ -15,7 +15,6 @@ import geometries.Intersectable.GeoPoint;
  */
 public class Render {
 
-	private Scene scene;
 	private Camera camera;
 	private ImageWriter imageWriter;
 	private RayTracerBase rayTracer;
@@ -26,7 +25,6 @@ public class Render {
 	}
 
 	public Render setScene(Scene _scene) {
-		scene = _scene;
 		return this;
 	}
 

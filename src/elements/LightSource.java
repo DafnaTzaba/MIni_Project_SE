@@ -23,5 +23,11 @@ public interface LightSource {
 	 * @return Vector that shows us the point of view (like a beam)
 	 */
 	public Vector getL(Point3D p);
+	
+	/**
+	 * return distance
+	 * @param point 
+	 */
+	double getDistance(Point3D point);
 
 }

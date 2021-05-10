@@ -33,5 +33,13 @@ public class DirectionalLight extends Light implements LightSource {
 		return direction; //return normal direction
 	}
 
+	/**
+	 * return POSITIVE_INFINITY. because its like the sun
+	 */
+	@Override
+	public double getDistance(Point3D point) {		
+		return Double.POSITIVE_INFINITY;
+	}
+
 	
 }

@@ -35,5 +35,13 @@ public class SpotLight extends PointLight {
 		return Il.scale(Math.max(0,l)); // maximum between 0 and the dot- product between direction and vector points.
 	}
 	
+	/**
+	 * return distance between the position of lights and our points
+	 */
+	public double getDistance(Point3D point) {
+		return super.getDistance(point);
+	}
+
+	
 
 }
