@@ -138,6 +138,7 @@ public class LightsTests {
 	private static Geometry triangle5 = new Triangle( //
 			new Point3D(90, 60, -85), new Point3D(40, -100, -30), new Point3D(40, -50, 40));
 	
+	
 	@Test
 	public void triangAllLight() {
 		
@@ -196,5 +197,6 @@ public class LightsTests {
 		render.renderImage();
 		render.writeToImage();
 	}
+
 
 }
