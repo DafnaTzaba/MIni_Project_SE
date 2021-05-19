@@ -23,6 +23,9 @@ public class Ray {
 	public Vector getDir() {
 		return dir;
 	}
+	
+	// Fixed to the size of the transfer of first rays to shading rays
+		private static final double DELTA = 0.1;
 
 //Constructor///
 
@@ -39,10 +42,19 @@ public class Ray {
 			dir = b.normalized();
 	}
 
-	/*
-	 * public Ray(Ray a) //copy constructor { p0= new Point3D(a.p0); dir=new
-	 * Vector(a.dir); }
-	 */
+	public Ray(Point3D head, Vector direction, Vector normal) {
+		if(direction.dotProduct(normal)>0)
+			p0=head.add(normal.scale(DELTA));
+		if(direction.dotProduct(normal)<0)
+			p0=head.add(normal.scale(DELTA*-1));
+		if(Util.isZero(direction.dotProduct(normal)))
+				p0=head;
+		if (direction.length() == 1) //normalize
+			dir = direction;
+		else
+			dir = direction.normalized();		
+	}
+
 	
 	/**
 	 * equal method for ray.  
