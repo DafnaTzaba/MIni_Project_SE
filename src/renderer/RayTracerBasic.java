@@ -29,8 +29,7 @@ public class RayTracerBasic extends RayTracerBase {
 
 	}
 
-	// Fixed to the size of the transfer of first rays to shading rays
-	private static final double DELTA = 0.1;
+	
 
 	/**
 	 * Looking for cuts between our foundation and the 3D model
@@ -82,18 +81,18 @@ public class RayTracerBasic extends RayTracerBase {
 		Color color = Color.BLACK;
 		Material material = geopoint.geometry.getMaterial();
 		double kr = material.kR, kkr = k * kr;
-		Vector normal=geopoint.geometry.getNormal(geopoint.point).normalized();
+		Vector normal=geopoint.geometry.getNormal(geopoint.point);
 		if (kkr > MIN_CALC_COLOR_K) {
 		Ray reflectedRay = constructReflectedRay(normal, geopoint.point, ray);
 		GeoPoint reflectedPoint = findClosestIntersection(reflectedRay);
-		if(reflectedPoint==null)return color;
+		if(reflectedPoint!=null)
 		color = color.add(calcColor(reflectedPoint, reflectedRay, level-1, kkr).scale(kr));
 		}
 		double kt = material.kT, kkt = k * kt;
 		if (kkt > MIN_CALC_COLOR_K) {
 		Ray refractedRay = constructRefractedRay(normal, geopoint.point, ray);
 		GeoPoint refractedPoint = findClosestIntersection(refractedRay);
-		if(refractedPoint==null)return color;
+		if(refractedPoint!=null)
 		color = color.add(calcColor(refractedPoint, refractedRay, level-1, kkt).scale(kt));
 		}
 		return color;
@@ -119,6 +118,7 @@ public class RayTracerBasic extends RayTracerBase {
 				Color lightlntensity = lightSource.getIntensity(intersection.point);
 				color = color.add(calcDiffusive(kd, nl, lightlntensity),
 						calcSpecular(ks, l, n, nl, v, nShininess, lightlntensity));
+				
 			}
 			}
 		}
@@ -150,9 +150,8 @@ public class RayTracerBasic extends RayTracerBase {
 		 double vn=(v.dotProduct(n));
 		 Vector vnn=n.scale(vn);
 		 Vector r=v.subtract(vnn.scale(2));
-		 Vector delta = n.scale(n.dotProduct(n) > 0 ? DELTA : -DELTA);
-			Point3D point = pt.add(delta);
-			Ray MoveRay = new Ray(point, r);
+		 
+			Ray MoveRay = new Ray(pt, r,n);
 		 
 		 return MoveRay;
 	
@@ -168,9 +167,7 @@ public class RayTracerBasic extends RayTracerBase {
 	 public Ray constructRefractedRay(Vector n,Point3D pt, Ray ray)
 	 {
 		 Vector v= ray.getDir();
-		 Vector delta = n.scale(n.dotProduct(v) > 0 ? DELTA : -DELTA);
-			Point3D point = pt.add(delta);
-			Ray MoveRay = new Ray(point, v);
+			Ray MoveRay = new Ray(pt, v,n);
 		 return MoveRay;
 	 }
 	 /**
@@ -201,20 +198,14 @@ public class RayTracerBasic extends RayTracerBase {
 	 */
 	private boolean unshaded(Vector l, Vector n, GeoPoint gp, LightSource lights) {
 		Vector lightDirection = l.scale(-1); // from point to light source
-		Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
-		Point3D point = gp.point.add(delta);
-		Ray lightRay = new Ray(point, lightDirection);
+		Ray lightRay = new Ray(gp.point, lightDirection, n); // refactored ray head move
 		List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
-		
 		if (intersections == null) 
 			return true;
 		double lightDistance = lights.getDistance(gp.point);
 		for (GeoPoint geopoint : intersections) { //move on points intersection and find if And if we encounter a cut that is closer to the first ray the distance between the point between the light source - we will return a lie
-		    double dis=geopoint.point.distance(gp.point);
-			if (((dis - lightDistance)) <= 0)	
-			return false;
-			else
-				if(!Util.isZero(geopoint.geometry.getMaterial().kT))
+			if (Util.alignZero(geopoint.point.distance(gp.point) - lightDistance) <= 0 &&
+					gp.geometry.getMaterial().kT == 0)
 					return false;
 		}
 		return true;

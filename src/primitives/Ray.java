@@ -43,12 +43,12 @@ public class Ray {
 	}
 
 	public Ray(Point3D head, Vector direction, Vector normal) {
-		if(direction.dotProduct(normal)>0)
+		if((direction.dotProduct(normal))>=0)
 			p0=head.add(normal.scale(DELTA));
 		if(direction.dotProduct(normal)<0)
-			p0=head.add(normal.scale(DELTA*-1));
-		if(Util.isZero(direction.dotProduct(normal)))
-				p0=head;
+			p0=head.add(normal.scale(-DELTA));
+		/*if(Util.isZero(direction.dotProduct(normal)))
+				p0=head;*/
 		if (direction.length() == 1) //normalize
 			dir = direction;
 		else
