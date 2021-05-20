@@ -18,9 +18,11 @@ import scene.Scene;
 public class ReflectionRefractionTests {
 	private Scene scene = new Scene("Test scene");
 
+	
 	/**
 	 * Produce a picture of a sphere lighted by a spot light
 	 */
+	
 	@Test
 	public void twoSpheres() {
 		Camera camera = new Camera.BuilderCamera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
@@ -94,6 +96,7 @@ public class ReflectionRefractionTests {
 	 * Produce a picture of a two triangles lighted by a spot light with a partially
 	 * transparent Sphere producing partial shadow
 	 */
+	
 	@Test
 	public void trianglesTransparentSphere() {
 		Camera camera = new Camera.BuilderCamera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
@@ -125,4 +128,5 @@ public class ReflectionRefractionTests {
 		render.renderImage();
 		render.writeToImage();
 	}
+	
 }

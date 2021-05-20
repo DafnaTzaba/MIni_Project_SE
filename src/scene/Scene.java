@@ -74,37 +74,4 @@ public class Scene {
 	
 	
 
-	/*
-	 * private Scene(BuilderScene builder) { name = builder.name; background =
-	 * builder.background; ambientLight = builder.ambientLight; geometries =
-	 * builder.geometries; }
-	 * 
-	 * /** Builder Class for Scene. ????
-	 */
-	/*
-	 * public static class BuilderScene { public String name; public Color
-	 * background; public AmbientLight ambientLight; public Geometries geometries;
-	 * 
-	 * public BuilderScene setBackground(Color _background) { background =
-	 * _background; return this; }
-	 * 
-	 * 
-	 * public BuilderScene setAmbientLight(AmbientLight _ambientLight) {
-	 * ambientLight = _ambientLight; return this; }
-	 * 
-	 * public BuilderScene setGeometries(Geometries _geometries) { geometries =
-	 * _geometries; return this; }
-	 * 
-	 * public Scene build() { Scene scene = new Scene(this); return scene; }
-	 * 
-	 * public BuilderScene(String _name) { name= _name; background=Color.BLACK;
-	 * ambientLight=new AmbientLight(Color.BLACK,0); geometries=new Geometries();
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 */
 }
