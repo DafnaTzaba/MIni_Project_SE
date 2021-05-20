@@ -87,6 +87,8 @@ public class RayTracerBasic extends RayTracerBase {
 		GeoPoint reflectedPoint = findClosestIntersection(reflectedRay);
 		if(reflectedPoint!=null)
 		color = color.add(calcColor(reflectedPoint, reflectedRay, level-1, kkr).scale(kr));
+		else
+			color=color.add(scene.background.scale(kr));
 		}
 		double kt = material.kT, kkt = k * kt;
 		if (kkt > MIN_CALC_COLOR_K) {
@@ -94,6 +96,8 @@ public class RayTracerBasic extends RayTracerBase {
 		GeoPoint refractedPoint = findClosestIntersection(refractedRay);
 		if(refractedPoint!=null)
 		color = color.add(calcColor(refractedPoint, refractedRay, level-1, kkt).scale(kt));
+		else
+			color=color.add(scene.background.scale(kt));
 		}
 		return color;
 		}
@@ -166,9 +170,13 @@ public class RayTracerBasic extends RayTracerBase {
 		 */
 	 public Ray constructRefractedRay(Vector n,Point3D pt, Ray ray)
 	 {
+		 
 		 Vector v= ray.getDir();
 			Ray MoveRay = new Ray(pt, v,n);
 		 return MoveRay;
+		 
+		 
+		 
 	 }
 	 /**
 	  * Calculate the closest cut from one place
@@ -204,8 +212,7 @@ public class RayTracerBasic extends RayTracerBase {
 			return true;
 		double lightDistance = lights.getDistance(gp.point);
 		for (GeoPoint geopoint : intersections) { //move on points intersection and find if And if we encounter a cut that is closer to the first ray the distance between the point between the light source - we will return a lie
-			if (Util.alignZero(geopoint.point.distance(gp.point) - lightDistance) <= 0 &&
-					gp.geometry.getMaterial().kT == 0)
+			if (Util.alignZero(geopoint.point.distance(gp.point) - lightDistance) <= 0 &&Util.isZero(geopoint.geometry.getMaterial().kT))
 					return false;
 		}
 		return true;
