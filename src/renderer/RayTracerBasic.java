@@ -86,12 +86,14 @@ public class RayTracerBasic extends RayTracerBase {
 		if (kkr > MIN_CALC_COLOR_K) {
 		Ray reflectedRay = constructReflectedRay(normal, geopoint.point, ray);
 		GeoPoint reflectedPoint = findClosestIntersection(reflectedRay);
+		if(reflectedPoint==null)return color;
 		color = color.add(calcColor(reflectedPoint, reflectedRay, level-1, kkr).scale(kr));
 		}
 		double kt = material.kT, kkt = k * kt;
 		if (kkt > MIN_CALC_COLOR_K) {
 		Ray refractedRay = constructRefractedRay(normal, geopoint.point, ray);
 		GeoPoint refractedPoint = findClosestIntersection(refractedRay);
+		if(refractedPoint==null)return color;
 		color = color.add(calcColor(refractedPoint, refractedRay, level-1, kkt).scale(kt));
 		}
 		return color;
@@ -179,7 +181,8 @@ public class RayTracerBasic extends RayTracerBase {
 	 private GeoPoint findClosestIntersection(Ray ray)
 	 {
 		 List<GeoPoint> intersection=scene.geometries.findGeoIntersections(ray);
-		 if(intersection==null)return null;
+		 if(intersection==null)
+			 return null;
 		 GeoPoint close=ray.getClosestGeoPoint(intersection);
 		 return close;
 	 
