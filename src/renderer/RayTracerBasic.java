@@ -244,7 +244,7 @@ public class RayTracerBasic extends RayTracerBase {
 	
 	//////// Soft Shadow////////////////////////////
 	 /**
-     * temp function
+     * temp function fd
      * create the beam of rays and calculate the
      * @param light
      * @param l
@@ -263,7 +263,7 @@ public class RayTracerBasic extends RayTracerBase {
         Vector v=new Vector(-l.getHead().getY(),l.getHead().getX(),0).normalized();
         Vector w=l.crossProduct(v);
    for(int i=0; i<81;i++) {
-       double t = 2 * PI * Math.random();
+	   double t = 2 * PI * Math.random();
        double r = radius * Math.random();
 //        double u = random()+random()
 //        double r = if u>1 then 2-u else u
