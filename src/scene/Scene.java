@@ -9,6 +9,7 @@ import elements.AmbientLight;
 import elements.Camera;
 import elements.Camera.BuilderCamera;
 import geometries.Geometries;
+import geometries.Intersectable;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
@@ -69,6 +70,16 @@ public class Scene {
 		this.lights = _lights;
 		return this;
 	}
+
+	/**
+	 * adds geometries to the scene
+	 * @param geometries
+	 */
+	public void addGeometries(Intersectable... geometrie) 
+	{
+		geometries.add(geometrie);
+	}
+	
 
 	
 	

@@ -14,7 +14,7 @@ public abstract class Geometry implements Intersectable  {
 	 */
 	 protected Color emmission=Color.BLACK;
 	 public abstract Vector getNormal(Point3D point);
-	 private Material material=new Material();
+	 public Material material=new Material();
 
 	 /**
 	  * get the emmision's field
