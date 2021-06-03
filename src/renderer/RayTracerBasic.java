@@ -217,6 +217,7 @@ public class RayTracerBasic extends RayTracerBase {
 		for (GeoPoint geopoint : intersections) { //move on points intersection and find if And if we encounter a cut that is closer to the first ray the distance between the point between the light source - we will return a lie
 			if (Util.alignZero(geopoint.point.distance(gp.point) - lightDistance) <= 0 &&Util.isZero(geopoint.geometry.getMaterial().kT))
 					return false;
+			
 		}
 		return true;
 	}
@@ -232,7 +233,7 @@ public class RayTracerBasic extends RayTracerBase {
 		double ktr = 1.0;
 
 		for (GeoPoint gp : intersections) { //move on points intersection and find if And if we encounter a cut that is closer to the first ray the distance between the point between the light source - we will return a lie
-			if (Util.alignZero(gp.point.distance(geoPoint.point) - lightDistance) <= 0 ){//&&Util.isZero(gp.geometry.getMaterial().kT)) {
+			if (Util.alignZero(gp.point.distance(geoPoint.point) - lightDistance) <= 0 ){
 				ktr *= gp.geometry.getMaterial().kT;
 			     if (ktr < MIN_CALC_COLOR_K) 
 				  return 0.0;

@@ -1,6 +1,8 @@
 package geometries;
 
 import static primitives.Util.*;
+
+import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -36,6 +38,20 @@ public class Tube extends Geometry {
 		axisRay = new Ray(ray.getP0(), ray.getDir());
 		radius = rad;
 	}
+	
+	/**
+	 * constructor
+	 * @param c self colour
+	 * @param d radius
+	 * @param r tilt of the tube
+	 */
+	/*
+	public Tube(Color c,double d,Ray r) {
+		super(c,d);
+		axisRay= new Ray(r.getP0(),r.getDir());
+	}*/
+
+
 
 	@Override
 	public Vector getNormal(Point3D point) {

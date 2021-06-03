@@ -3,6 +3,7 @@ package geometries;
 import java.util.List;
 
 import geometries.Intersectable.GeoPoint;
+import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -21,6 +22,7 @@ public class Cylinder extends Tube {
 		return height;
 	}
 
+	//-------------constructor
 	/**
 	 * constructor
 	 * 
@@ -33,13 +35,30 @@ public class Cylinder extends Tube {
 		height = heig;
 	}
 
-	@Override
-	public Vector getNormal(Point3D point) {
+	/**
+	 * constructor
+	 * @param d radius
+	 * @param r ray
+	 * @param h height
+	 * @param c emession colour
+	 */
+	/*
+	public Cylinder(Color c,double d, Ray r,double h) {
+		super(c,d, r);
+		height=h;
+	}*/
 
-		return null;
+	@Override
+	public Vector getNormal(Point3D p) {
+		if (p.equals((this.getAxisRay().getP0())) || p.subtract(this.getAxisRay().getP0()).normalize().equals(this.getAxisRay().getDir().normalize())) //if it is on the normal
+			return this.getAxisRay().getDir().normalize();
+		Vector v= new Vector(super.getNormal(p).getHead());
+		if(v.length()==this.getRadius()) //if it is not on a base
+			return v.normalize();
+		return this.getAxisRay().getDir().normalize(); //if it is on the base
+
 	}
 
-	@Override
 	public String toString() {
 		return super.toString() + "height: " + height;
 	}
