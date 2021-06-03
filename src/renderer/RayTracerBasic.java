@@ -245,29 +245,33 @@ public class RayTracerBasic extends RayTracerBase {
 	
 	//////// Soft Shadow////////////////////////////
 	 /**
-     * temp function fdgfdgdcdcdvghvfvfvgr
+     * the function return average of the transparency factor between the rays. 
      * create the beam of rays and calculate the
-     * @param light
-     * @param l
-     * @param n
-     * @param geopoint
-     * @param angle
+     * @param light= source light
+     * @param l =the beam between the source light to the point on the geometry
+     * @param n = normal
+     * @param geopoint 
+     * @param angle =angle between the point on the geometry and l. in order to calculate the radius of the circle around the source light. 
      */
     private double callTransparency(LightSource light, Vector l, Vector n, GeoPoint geopoint,double angle){
-        Point3D p0=light.getPosition();
-        if(p0==null) 
-         return transparency(light, l, n, geopoint) ;
-        double distanceL=p0.distance(geopoint.point);
+        Point3D p0=light.getPosition(); //position of the light
+        if(p0==null||angle==0)  //if the light==direction light
+         return transparency(light, l, n, geopoint) ; 
+        
+        //calculate radius of the circle
+        double distanceL=p0.distance(geopoint.point); 
         double radius=distanceL* Math.tan(Math.toRadians(angle));
         double sumKtr=0;
 
+        //find points on our circle at the same plane. 
         Vector v=new Vector(-l.getHead().getY(),l.getHead().getX(),0).normalized();
         Vector w=l.crossProduct(v);
+        
+        //send beam to calculate and sum the ktr
    for(int i=0; i<81;i++) {
 	   double t = 2 * PI * Math.random();
        double r = radius * Math.random();
-//        double u = random()+random()
-//        double r = if u>1 then 2-u else u
+
        double alpha = r * Math.cos(t);
        double beta = r * Math.sin(t);
 
