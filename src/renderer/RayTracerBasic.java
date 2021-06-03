@@ -245,7 +245,7 @@ public class RayTracerBasic extends RayTracerBase {
 	
 	//////// Soft Shadow////////////////////////////
 	 /**
-     * temp function fdgfdgdcdcdvghvfvfv
+     * temp function fdgfdgdcdcdvghvfvfvgr
      * create the beam of rays and calculate the
      * @param light
      * @param l
