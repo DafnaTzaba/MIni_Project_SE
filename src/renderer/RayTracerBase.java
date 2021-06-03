@@ -13,7 +13,7 @@ public abstract class RayTracerBase {
 	
 	
 	protected Scene scene;
-	public abstract Color traceRay(Ray ray);
+	public abstract Color traceRay(Ray ray,double alfa);
 	
 	public RayTracerBase(Scene _scene) {
 		scene=_scene;

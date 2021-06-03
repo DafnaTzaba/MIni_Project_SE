@@ -17,7 +17,7 @@ public class ShadowTests {
 	private Scene scene = new Scene("Test scene");
 	private Camera camera = new Camera.BuilderCamera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
 			.setViewPlaneHeight(200).setViewPlaneWidth(200).setDistance(1000).build();
-
+	private double alfa=10.0;
 	/**
 	 * Produce a picture of a sphere and triangle with point light and shade
 	 */
@@ -39,7 +39,7 @@ public class ShadowTests {
 				setImageWriter(new ImageWriter("shadowSphereTriangleInitial", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -68,7 +68,7 @@ public class ShadowTests {
 				.setImageWriter(new ImageWriter("shadowTrianglesSphere", 600, 600)) //
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -94,7 +94,7 @@ public class ShadowTests {
 				setImageWriter(new ImageWriter("shadowSphereTriangleInitial2", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -119,7 +119,7 @@ public class ShadowTests {
 				setImageWriter(new ImageWriter("shadowSphereTriangleInitial1", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -144,7 +144,7 @@ public class ShadowTests {
 				setImageWriter(new ImageWriter("shadowSphereTriangleInitial3", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -166,7 +166,7 @@ public class ShadowTests {
 				setImageWriter(new ImageWriter("shadowSphereTriangleInitial4", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 //

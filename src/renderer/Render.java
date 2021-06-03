@@ -42,7 +42,7 @@ public class Render {
 	 * Goes through a loop on our screen. For each pixel a beam will be built and for each beam we will get a color from the horn comb.
 	 *  The  color in the appropriate pixel of the image manufacturer
 	 */
-	public void renderImage() {
+	public void renderImage(double alfa) {
 		try {
 			if (imageWriter == null) {
 				throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
@@ -63,7 +63,7 @@ public class Render {
             for (int i = 0; i < nY; i++) {
                 for (int j = 0; j < nX; j++) {
                     Ray ray = camera.constructRayThroughPixel(nX, nY, j, i);
-                    Color pixelColor = rayTracer.traceRay(ray);
+                    Color pixelColor = rayTracer.traceRay(ray,alfa);
                     imageWriter.writePixel(j, i, pixelColor);
                 }
             }

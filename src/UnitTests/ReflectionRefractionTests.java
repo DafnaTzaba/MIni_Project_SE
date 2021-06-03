@@ -21,6 +21,7 @@ import scene.Scene;
  */
 public class ReflectionRefractionTests {
 	private Scene scene = new Scene("Test scene");
+	private double alfa=10.0;
 
 	/**
 	 * Produce a picture of a sphere lighted by a spot light
@@ -41,7 +42,7 @@ public class ReflectionRefractionTests {
 
 		Render render = new Render().setImageWriter(new ImageWriter("refractionTwoSpheres", 500, 500)).setCamera(camera)
 				.setRayTracer(new RayTracerBasic(scene));
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -75,7 +76,7 @@ public class ReflectionRefractionTests {
 		Render render = new Render().setImageWriter(imageWriter).setCamera(camera)
 				.setRayTracer(new RayTracerBasic(scene));
 
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -106,7 +107,7 @@ public class ReflectionRefractionTests {
 		Render render = new Render().setImageWriter(imageWriter) //
 				.setCamera(camera).setRayTracer(new RayTracerBasic(scene));
 
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 
@@ -155,7 +156,7 @@ public class ReflectionRefractionTests {
 		Render render = new Render().setImageWriter(imageWriter).setCamera(camera)
 				.setRayTracer(new RayTracerBasic(scene));
 
-		render.renderImage();
+		render.renderImage(alfa);
 		render.writeToImage();
 	}
 

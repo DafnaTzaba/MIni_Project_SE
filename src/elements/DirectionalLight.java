@@ -41,5 +41,11 @@ public class DirectionalLight extends Light implements LightSource {
 		return Double.POSITIVE_INFINITY;
 	}
 
+	@Override
+	public Point3D getPosition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

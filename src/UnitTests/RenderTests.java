@@ -19,7 +19,7 @@ public class RenderTests {
 			.setViewPlaneHeight(500)
 			.setViewPlaneWidth(500)
 			.build();
-
+	private double alfa=10.0;
 	/**
 	 * Produce a scene with basic 3D model and render it into a png image with a
 	 * grid
@@ -46,7 +46,7 @@ public class RenderTests {
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
 
-		render.renderImage();
+		render.renderImage(alfa);
 		render.printGrid(100, new Color(java.awt.Color.YELLOW));
 		render.writeToImage();
 	}
@@ -79,7 +79,7 @@ public class RenderTests {
 				.setCamera(camera) //
 				.setRayTracer(new RayTracerBasic(scene));
 
-		render.renderImage();
+		render.renderImage(alfa);
 		render.printGrid(100, new Color(java.awt.Color.WHITE));
 		render.writeToImage();
 	}
