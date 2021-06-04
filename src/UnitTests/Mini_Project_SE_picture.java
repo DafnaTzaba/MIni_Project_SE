@@ -93,77 +93,129 @@ public class Mini_Project_SE_picture {
 						new Point3D(48,50,-80) 
 						)
 				.setEmission(Color.WHITE)
-				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)),
-				
-				
-				
-				new Triangle(
-						new Point3D(-72,-70,-80),
-						new Point3D(-38,-83,-80),
-						new Point3D(-81,-83,-80) 
-						)
-				.setEmission(Color.WHITE)
-				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)),
-				
-				
-				
-				new Triangle(
-						new Point3D(-38,-70,-80),
-						new Point3D(-72,-70,-80),
-						new Point3D(-38,-83,-80) 
-						)
-				.setEmission(Color.WHITE)
-				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)),
-				
-				
-				new Triangle(
-						new Point3D(-68,-60,-80),
-						new Point3D(-38,-70,-80),
-						new Point3D(-72,-70,-80) 
-						)
-				.setEmission(Color.ORANGE)
-				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)),
-				
-				
-				
-				new Triangle(
-						new Point3D(-38,-70,-80),
-						new Point3D(-72,-70,-80),
-						new Point3D(-38,-83,-80) 
-						)
-				.setEmission(Color.WHITE)
 				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60))
+				
+				
+				
+//				new Triangle(
+//						new Point3D(-72,-70,-80),
+//						new Point3D(-38,-83,-80),
+//						new Point3D(-81,-83,-80) 
+//						)
+//				.setEmission(Color.WHITE)
+//				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)),
+//				
+//				
+//				
+//				new Triangle(
+//						new Point3D(-38,-70,-80),
+//						new Point3D(-72,-70,-80),
+//						new Point3D(-38,-83,-80) 
+//						)
+//				.setEmission(Color.WHITE)
+//				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)),
+//				
+//				
+//				new Triangle(
+//						new Point3D(-68,-60,-80),
+//						new Point3D(-38,-70,-80),
+//						new Point3D(-72,-70,-80) 
+//						)
+//				.setEmission(Color.ORANGE)
+//				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)),
+//				
+//				
+//				
+//				new Triangle(
+//						new Point3D(-38,-70,-80),
+//						new Point3D(-72,-70,-80),
+//						new Point3D(-38,-83,-80) 
+//						)
+//				.setEmission(Color.WHITE)
+//				.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60))
 				
 				);
 		
 		
-//		
-//		int z;
-//		for (int j = -12; j < 1; j++) {
-//			if (j % 2 == 0)
-//				z = 1;
-//			else
-//				z = 0;
-//			for (int i = -1; i < 4; i++) {
-//				scene.addGeometries(new Triangle(
-//						new Point3D(-50 * 2 + i * 200 + z * 100, 150, 450 + j * 100),
-//						new Point3D(0 + i * 200 + z * 100, 150, 450 + j * 100),
-//						new Point3D(-50 * 2 + i * 200 + z * 100, 150, 100 + 450 + j * 100))
-//						.setEmission(Color.WHITE)
-//						.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)),
-//						
-//						
-//						
-//						
-//						new Triangle(
-//								new Point3D(0 + i * 200 + z * 100, 150, 100 + 450 + j * 100),
-//								new Point3D(0 + i * 200 + z * 100, 150, 450 + j * 100),
-//								new Point3D(-50 * 2 + i * 200 + z * 100, 150, 100 + 450 + j * 100))
-//						.setEmission(Color.WHITE)
-//						.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)));
-//						
-//			}
-//		}
+		
+		
+		for (int j = 0; j < 4; j++) {
+			for (int i =0; i < 4; i++) {
+				if(i%2==0)
+				{
+					if(j%2==0)
+					{
+				scene.addGeometries(new Triangle(
+						new Point3D(-81+40*i ,-83+13*j,-80 ),
+						new Point3D(-38+40*i,-83+13*j, -80),
+						new Point3D(-72+33*i, -70+13*j, -80))
+						.setEmission(Color.WHITE)
+						.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)),
+						new Triangle(
+								new Point3D(-72+33*i, -70+13*j, -80),
+								new Point3D(-38+40*i, -70+13*j, -80),
+								new Point3D(-38+40*i,-83+13*j, -80))
+						.setEmission(Color.WHITE)
+						.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)));
+					}
+					else
+						scene.addGeometries(new Triangle(
+								new Point3D(-81+40*i ,-83+13*j,-80 ),
+								new Point3D(-38+40*i,-83+13*j, -80),
+								new Point3D(-72+33*i, -70+13*j, -80))
+								.setEmission(Color.GREY)
+								.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)),
+								new Triangle(
+										new Point3D(-72+33*i, -70+13*j, -80),
+										new Point3D(-38+40*i, -70+13*j, -80),
+										new Point3D(-38+40*i,-83+13*j, -80))
+								.setEmission(Color.GREY)
+								.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)));
+				}
+				else
+				{
+					if(j%2==0)
+					{
+				scene.addGeometries(new Triangle(
+						new Point3D(-81+40*i ,-83+13*j,-80 ),
+						new Point3D(-38+40*i,-83+13*j, -80),
+						new Point3D(-72+33*i, -70+13*j, -80))
+						.setEmission(Color.GREY)
+						.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)),
+						new Triangle(
+								new Point3D(-72+33*i, -70+13*j, -80),
+								new Point3D(-38+40*i, -70+13*j, -80),
+								new Point3D(-38+40*i,-83+13*j, -80))
+						.setEmission(Color.GREY)
+						.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)));
+					}
+					else
+						scene.addGeometries(new Triangle(
+								new Point3D(-81+40*i ,-83+13*j,-80 ),
+								new Point3D(-38+40*i,-83+13*j, -80),
+								new Point3D(-72+33*i, -70+13*j, -80))
+								.setEmission(Color.WHITE)
+								.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)),
+								
+								new Triangle(
+										new Point3D(-72+33*i, -70+13*j, -80),
+										new Point3D(-38+40*i, -70+13*j, -80),
+										new Point3D(-38+40*i,-83+13*j, -80))
+								.setEmission(Color.WHITE)
+								.setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(20).setKT(0)));
+				}
+					
+		
+					
+						
+			}
+		}
+						
+						
+						
+						
+					
+						
 		
 		
 
@@ -189,7 +241,7 @@ public class Mini_Project_SE_picture {
 	
 		
 	}
-
+}
 //	@Test
 //	public void catTest() {
 //		Scene scene = new Scene("Test scene");
@@ -333,4 +385,4 @@ public class Mini_Project_SE_picture {
 //		render.writeToImage();
 //	}
 
-}
+
