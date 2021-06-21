@@ -329,7 +329,7 @@ public class RayTracerBasic extends RayTracerBase {
 			ktr += transparency(light, newL, n, geopoint); // sum ktr of all points
 
 		}
-		return AdaptiveSquare(circlePoint, light, n, positionLight, geopoint, 3); // call to recurse adaptive sampling
+		return AdaptiveSquare(circlePoint, light, n, positionLight, geopoint, 7); // call to recurse adaptive sampling
 	}
 
 	/**
