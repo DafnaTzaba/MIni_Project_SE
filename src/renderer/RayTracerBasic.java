@@ -19,7 +19,7 @@ public class RayTracerBasic extends RayTracerBase {
 	private static final int MAX_CALC_COLOR_LEVEL = 10;
 	private static final double MIN_CALC_COLOR_K = 0.001;
 	private static final double INITIAL_K = 1.0;
-	private static final double PI = 180;// 3.141592653589793;
+	private static final double PI = 3.141592653589793;
 
 	/**
 	 * constructor. use papa constructor
@@ -222,14 +222,17 @@ public class RayTracerBasic extends RayTracerBase {
 		return true;
 	}
 
-	private double transparency(LightSource light, Vector l, Vector n, GeoPoint geoPoint) {
+	private double transparency(LightSource light, Vector l, Vector n, GeoPoint geoPoint, Point3D p0) {
 
 		Vector lightDirection = l.scale(-1); // from point to light source
 		Ray lightRay = new Ray(geoPoint.point, lightDirection, n); // refactored ray head move
 		List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
 		if (intersections == null)
 			return 1.0;
-		double lightDistance = light.getDistance(geoPoint.point);
+		
+		//double lightDistance = light.getDistance(geoPoint.point);
+		double lightDistance = p0.distance(geoPoint.point);
+
 		double ktr = 1.0;
 
 		for (GeoPoint gp : intersections) { // move on points intersection and find if And if we encounter a cut that is
@@ -257,7 +260,7 @@ public class RayTracerBasic extends RayTracerBase {
 	private double callTransparency(LightSource light, Vector l, Vector n, GeoPoint geopoint, double angle) {
 		Point3D p0 = light.getPosition(); // position of the light
 		if (p0 == null || angle == 0) // if the light==direction light
-			return transparency(light, l, n, geopoint);
+			return transparency(light, l, n, geopoint,p0);
 
 		// calculate radius of the circle
 		double distanceL = p0.distance(geopoint.point);
@@ -269,6 +272,7 @@ public class RayTracerBasic extends RayTracerBase {
 		Vector w = l.crossProduct(v);
 
 		return AdaptiveSuperamplingcallTransparency(light, n, radius, p0, v, w, geopoint, 2 * PI, 1);
+		
 //		double a= AdaptiveSuperamplingcallTransparency(light, n, radius, p0, v, w, geopoint, 2 * PI, 1);
 //		if(a!=-1)
 //			return a;
@@ -286,7 +290,7 @@ public class RayTracerBasic extends RayTracerBase {
 //       {       
 //       Point3D randomPoint = p0.add(v.scale(alpha).add(w.scale(beta)));
 //       Vector randomL = geopoint.point.subtract(randomPoint).normalized();
-//       sumKtr += transparency(light, randomL, n, geopoint);
+//       sumKtr += transparency(light, randomL, n, geopoint,p0);
 //       }
 //       else
 //    	   i--;
@@ -323,13 +327,14 @@ public class RayTracerBasic extends RayTracerBase {
 			double beta = radius * Math.sin(t);
 			Point3D point = positionLight.add(v.scale(alpha).add(w.scale(beta)));
 
-			Vector newL = geopoint.point.subtract(point).normalized(); // ray between our point at the circle and the
+			//Vector newL = geopoint.point.subtract(point).normalized(); // ray between our point at the circle and the
 																		// point on our body
 			circlePoint.add(i, point); // add to our list
-			ktr += transparency(light, newL, n, geopoint); // sum ktr of all points
+			//ktr += transparency(light, newL, n, geopoint,point); // sum ktr of all points
 
 		}
-		return AdaptiveSquare(circlePoint, light, n, positionLight, geopoint, 7); // call to recurse adaptive sampling
+		circlePoint.add(4, positionLight);
+		return AdaptiveSquare(circlePoint, light, n, positionLight, geopoint, 6); // call to recurse adaptive sampling
 	}
 
 	/**
@@ -358,19 +363,21 @@ public class RayTracerBasic extends RayTracerBase {
 		Point3D B = points.get(1);
 		Point3D C = points.get(2);
 		Point3D D = points.get(3);
+		Point3D E = points.get(4); //center circle
 
+		
 		for (Point3D point : points) { // move on the list
 
 			Vector SquareL = geopoint.point.subtract(point).normalized(); // ray from our point to the body
 			if (!point.equals(A)) { // if this the first point we check
-				double kt = transparency(light, SquareL, n, geopoint); // ktr point
+				double kt = transparency(light, SquareL, n, geopoint,point); // ktr point
 				sumKtr += kt; // sum ktr
 				if (kt != ktr) { // if all the ktr are same. if not equal flag=false
 					flag = false;
 				}
 
 			} else { // the first time
-				ktr = transparency(light, SquareL, n, geopoint);
+				ktr = transparency(light, SquareL, n, geopoint,point);
 				sumKtr += ktr;
 			}
 		}
@@ -398,21 +405,38 @@ public class RayTracerBasic extends RayTracerBase {
 			square1.add(1, B);
 			square1.add(2, middleBC);
 			square1.add(3, middleAC);
+			Point3D center1 = new Point3D(0.5 * (middleAB.getX() + middleBC.getX()), 0.5 * (middleAB.getY() + middleBC.getY()),
+					0.5 * (middleAB.getZ() + middleBC.getZ()));
+			square1.add(4, center1);
 
 			square2.add(0, A);
 			square2.add(1, middleAB);
 			square2.add(2, middleAC);
 			square2.add(3, middleAD);
-
+			Point3D center2 = new Point3D(0.5 * (middleAC.getX() + C.getX()), 0.5 * (middleAC.getY() + C.getY()),
+					0.5 * (middleAC.getZ() + C.getZ()));
+			square2.add(4, center2);
+			
+			
 			square3.add(0, middleAD);
 			square3.add(1, middleAC);
 			square3.add(2, middleDC);
 			square3.add(3, D);
+			Point3D center3 = new Point3D(0.5 * (middleAD.getX() + middleDC.getX()), 0.5 * (middleAD.getY() + middleDC.getY()),
+					0.5 * (middleAD.getZ() + middleDC.getZ()));
+			square3.add(4, center3);
+			
+			
 
 			square4.add(0, middleAC);
 			square4.add(1, middleBC);
 			square4.add(2, C);
 			square4.add(3, middleDC);
+			Point3D center4 = new Point3D(0.5 * (A.getX() + middleAC.getX()), 0.5 * (A.getY() + middleAC.getY()),
+					0.5 * (A.getZ() + middleAC.getZ()));
+			square4.add(4, center4);
+			
+			
 
 			// call recursive to 4 part of the square and sum the result
 			return (AdaptiveSquare(square1, light, n, positionLight, geopoint, depth - 1)
@@ -421,7 +445,7 @@ public class RayTracerBasic extends RayTracerBase {
 					+ AdaptiveSquare(square4, light, n, positionLight, geopoint, depth - 1)) * 0.25;
 
 		} else // if we dont do recursive call return ktr
-			return sumKtr * 0.25;
+			return sumKtr * 0.2;
 
 	}
 

@@ -15,7 +15,7 @@ import scene.Scene;
  * @author Dan
  */
 public class TeapotTest {
-	double alfa=0;
+	double alfa=10;
 	private final Camera camera = new Camera.BuilderCamera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, 1, 0)) //
 			.setDistance(1000)
 			.setViewPlaneHeight(200)
