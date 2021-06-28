@@ -229,9 +229,13 @@ public class RayTracerBasic extends RayTracerBase {
 		List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
 		if (intersections == null)
 			return 1.0;
+		 double lightDistance =0;
+		if(p0==null)
+		{
+			lightDistance = light.getDistance(geoPoint.point);
+		}
 		
-		//double lightDistance = light.getDistance(geoPoint.point);
-		double lightDistance = p0.distance(geoPoint.point);
+		else lightDistance = p0.distance(geoPoint.point);
 
 		double ktr = 1.0;
 
@@ -321,17 +325,18 @@ public class RayTracerBasic extends RayTracerBase {
 		List<Point3D> circlePoint = new LinkedList<>(); // list of 4 points in a circle
 		for (int i = 0; i < 4; i++) {
 			double t = 0.25 * PI + 0.5 * PI * i; // our angle in circle. the first point in angle PI/4
-
+if(Math.cos(t)!=0&&Math.sin(t)!=0) {
 			// calculate a point in circle
 			double alpha = radius * Math.cos(t);
 			double beta = radius * Math.sin(t);
+
 			Point3D point = positionLight.add(v.scale(alpha).add(w.scale(beta)));
 
 			//Vector newL = geopoint.point.subtract(point).normalized(); // ray between our point at the circle and the
 																		// point on our body
 			circlePoint.add(i, point); // add to our list
 			//ktr += transparency(light, newL, n, geopoint,point); // sum ktr of all points
-
+}
 		}
 		circlePoint.add(4, positionLight);
 		return AdaptiveSquare(circlePoint, light, n, positionLight, geopoint, 6); // call to recurse adaptive sampling

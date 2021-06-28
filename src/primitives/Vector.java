@@ -48,10 +48,8 @@ public class Vector {
 			throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
 	}
 
-	/*
-	 * public Vector(Vector b) //copy constructor { head=new Point3D(b.head); }
-	 */
 	
+
 	/**
 	 * add vector to excises vector
 	 * @param vec to add 
