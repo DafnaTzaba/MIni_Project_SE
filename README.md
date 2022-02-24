@@ -8,3 +8,9 @@ instructions from the lecturer and the latest parts give more free hand for stud
  
 The program requires problem domain: color, geometry, algebra, photography, architecture, etc. 
 The program contains vectors and points created by the programmer rather than modules reserved in the work environment.
+
+
+
+
+
+![triangle](https://user-images.githubusercontent.com/73180083/155595886-81af5cc5-6c03-44ca-a288-6aa4d7321acc.png)
